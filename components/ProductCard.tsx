@@ -5,7 +5,7 @@ import type { GoogleGenAI } from '@google/genai';
 
 interface ProductCardProps {
   product: Product;
-  ai: GoogleGenAI;
+  ai: GoogleGenAI | null;
   onAddToCart: (product: Product) => void;
 }
 
@@ -28,7 +28,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, ai, onAddToCa
   const [errorSummary, setErrorSummary] = useState('');
 
   const handleGenerateSummary = async () => {
-    if (!product.description || isLoadingSummary) return;
+    if (!ai || !product.description || isLoadingSummary) return;
     setIsLoadingSummary(true);
     setErrorSummary('');
     setSummary('');
@@ -76,7 +76,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, ai, onAddToCa
           <p className="text-sm text-text-secondary mt-2 leading-relaxed">{product.description}</p>
         
             <div className="mt-4">
-                {!summary && product.description && (
+                {!summary && product.description && ai && (
                     <div>
                     {!isLoadingSummary ? (
                         <button

@@ -28,8 +28,22 @@ const App: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [step, setStep] = useState<Step>('selection');
   const [finalOrder, setFinalOrder] = useState<OrderDetails | null>(null);
+  const [ai, setAi] = useState<GoogleGenAI | null>(null);
 
-  const ai = useMemo(() => new GoogleGenAI({ apiKey: process.env.API_KEY }), []);
+  useEffect(() => {
+    try {
+      // The platform is expected to provide process.env.API_KEY.
+      // If it's not available, we prevent a crash and disable AI features.
+      const apiKey = (process as any)?.env?.API_KEY;
+      if (apiKey) {
+        setAi(new GoogleGenAI({ apiKey }));
+      } else {
+        console.warn("API key not found. AI features will be disabled.");
+      }
+    } catch (e) {
+      console.error("Error initializing GoogleGenAI:", e);
+    }
+  }, []);
 
   const handleAddToCart = (product: Product) => {
     setCart(prevCart => {
