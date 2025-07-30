@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Header } from './components/Header';
 import { ProductCard } from './components/ProductCard';
 import { Footer } from './components/Footer';
@@ -8,10 +8,14 @@ import { DeliveryForm } from './components/DeliveryForm';
 import { OrderConfirmation } from './components/OrderConfirmation';
 import { CartSummaryBar } from './components/CartSummaryBar';
 import type { Product, CartItem, OrderDetails, Step } from './types';
-import { GoogleGenAI } from '@google/genai';
-import { WHATSAPP_NUMBER } from './config';
 
+// CONFIGURA TU NÚMERO DE WHATSAPP AQUÍ
+// Incluye el código de país sin el símbolo '+' o espacios.
+// Ejemplo para México: '5211234567890'
+const WHATSAPP_NUMBER = '5211234567890';
 const SHIPPING_COST = 20;
+const PRODUCTS_URL = 'https://raw.githubusercontent.com/remato-shop/remato-shop.github.io/refs/heads/main/data/products.json';
+
 
 const SearchIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -22,27 +26,44 @@ const SearchIcon = () => (
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [loadingError, setLoadingError] = useState<string | null>(null);
+  
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [step, setStep] = useState<Step>('selection');
   const [finalOrder, setFinalOrder] = useState<OrderDetails | null>(null);
-  const [ai, setAi] = useState<GoogleGenAI | null>(null);
 
   useEffect(() => {
-    try {
-      // The platform is expected to provide process.env.API_KEY.
-      // If it's not available, we prevent a crash and disable AI features.
-      const apiKey = (process as any)?.env?.API_KEY;
-      if (apiKey) {
-        setAi(new GoogleGenAI({ apiKey }));
-      } else {
-        console.warn("API key not found. AI features will be disabled.");
+    const fetchProducts = async () => {
+      try {
+        setIsLoading(true);
+        setLoadingError(null);
+        const response = await fetch(PRODUCTS_URL);
+        if (!response.ok) {
+          throw new Error(`Error ${response.status}: No se pudo obtener la lista de productos.`);
+        }
+        const rawData = await response.json();
+        
+        const mappedProducts: Product[] = rawData.map((item: any) => ({
+          id: item['Código de barras'],
+          name: item['Nombre'],
+          description: item['Descripción'],
+          price: parseFloat(item['Precio']),
+          stock: parseInt(item['Stock'], 10),
+          category: item['Categoría'],
+        }));
+
+        setProducts(mappedProducts);
+      } catch (err: any) {
+        console.error("Fallo al obtener los productos:", err);
+        setLoadingError('No se pudieron cargar los productos. Por favor, intenta de nuevo más tarde.');
+      } finally {
+        setIsLoading(false);
       }
-    } catch (e) {
-      console.error("Error initializing GoogleGenAI:", e);
-    }
+    };
+
+    fetchProducts();
   }, []);
 
   const handleAddToCart = (product: Product) => {
@@ -114,7 +135,6 @@ ${productList}
   };
 
   const handleFinalizeOrder = (deliveryDetails: Omit<OrderDetails, 'id' | 'cart' | 'total' | 'subtotal' | 'shippingCost'>) => {
-    // Generar un ID de pedido único
     const now = new Date();
     const datePart = now.toISOString().slice(0, 10).replace(/-/g, '');
     const timePart = now.toTimeString().slice(0, 8).replace(/:/g, '');
@@ -131,7 +151,7 @@ ${productList}
     };
     
     setFinalOrder(completeOrder);
-    sendOrderToWhatsApp(completeOrder); // Enviar pedido a WhatsApp
+    sendOrderToWhatsApp(completeOrder);
     
     setCart([]);
     setStep('confirmation');
@@ -141,36 +161,6 @@ ${productList}
       setFinalOrder(null);
       setStep('selection');
   }
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('./data/products.json');
-        if (!response.ok) {
-          throw new Error(`Error al cargar datos: ${response.statusText}`);
-        }
-        const rawData = await response.json();
-        const data: Product[] = rawData.map((item: any) => ({
-          id: item['Código de barras'],
-          name: item['Nombre'],
-          description: item['Descripción'],
-          price: parseFloat(item['Precio']),
-          stock: parseInt(item['Stock'], 10),
-          category: item['Categoría'],
-        }));
-        setProducts(data);
-      } catch (e) {
-        if (e instanceof Error) {
-          setError(`No se pudieron cargar los productos: ${e.message}`);
-        } else {
-          setError('Ocurrió un error desconocido.');
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
-  }, []);
   
   const cartItemCount = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
   const cartSubtotal = useMemo(() => cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0), [cart]);
@@ -187,23 +177,9 @@ ${productList}
       product.category.toLowerCase().includes(query) ||
       product.description.toLowerCase().includes(query)
     );
-  }, [products, searchQuery]);
+  }, [searchQuery, products]);
   
-  const renderSelectionStep = () => {
-    if (loading) {
-      return (
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-accent"></div>
-        </div>
-      );
-    }
-    if (error) {
-      return (
-        <div className="text-center py-20 px-4 bg-red-100/50 border border-red-400/50 text-red-700 rounded-lg">
-          <p className="text-xl font-semibold">{error}</p>
-        </div>
-      );
-    }
+  const renderSelectionList = () => {
     if (filteredProducts.length > 0) {
       return (
         <div className="flex flex-col gap-6 max-w-5xl mx-auto pb-32">
@@ -211,7 +187,6 @@ ${productList}
             <ProductCard 
                 key={product.id} 
                 product={product} 
-                ai={ai} 
                 onAddToCart={handleAddToCart}
             />
           ))}
@@ -251,6 +226,24 @@ ${productList}
         return finalOrder ? <OrderConfirmation orderDetails={finalOrder} onNewOrder={handleStartNewOrder} /> : null;
       case 'selection':
       default:
+        if (isLoading) {
+            return (
+                <div className="text-center py-20 flex flex-col items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mb-4"></div>
+                    <p className="text-xl text-text-secondary font-semibold">Cargando productos...</p>
+                </div>
+            );
+        }
+
+        if (loadingError) {
+            return (
+                <div className="text-center py-20">
+                    <p className="text-xl text-red-500 font-semibold">¡Ups! Algo salió mal</p>
+                    <p className="text-text-secondary/70 mt-2">{loadingError}</p>
+                </div>
+            );
+        }
+        
         return (
           <>
             <div className="relative my-6 max-w-2xl mx-auto">
@@ -266,7 +259,7 @@ ${productList}
                 <SearchIcon />
               </div>
             </div>
-            {renderSelectionStep()}
+            {renderSelectionList()}
           </>
         );
     }
