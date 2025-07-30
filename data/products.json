@@ -1,0 +1,66 @@
+[
+    {
+        "Código de barras": "7506425665150",
+        "Nombre": "Escudo Jabón",
+        "Descripción": "Jabón en barra antibacterial, pack de 12",
+        "Precio": "190",
+        "Stock": "15",
+        "Categoría": "Cuidado Personal"
+    },
+    {
+        "Código de barras": "7506339323474",
+        "Nombre": "Salvo Limón",
+        "Descripción": "Lavavajillas líquido aroma limón 1.2L",
+        "Precio": "60",
+        "Stock": "8",
+        "Categoría": "Limpieza"
+    },
+    {
+        "Código de barras": "7501001158300",
+        "Nombre": "Teclado Gamer",
+        "Descripción": "Mecánico con luces RGB programables",
+        "Precio": "1250",
+        "Stock": "0",
+        "Categoría": "Electrónicos"
+    },
+    {
+        "Código de barras": "7501001158301",
+        "Nombre": "Sudadera Casual",
+        "Descripción": "De algodón con capucha, color gris",
+        "Precio": "450",
+        "Stock": "25",
+        "Categoría": "Ropa"
+    },
+    {
+        "Código de barras": "7501052414739",
+        "Nombre": "Cafetera Express",
+        "Descripción": "Para café molido y cápsulas, 15 bares",
+        "Precio": "1800",
+        "Stock": "5",
+        "Categoría": "Hogar"
+    },
+    {
+        "Código de barras": "7500435133602",
+        "Nombre": "Mouse Inalámbrico",
+        "Descripción": "Ergonómico, 6 botones, 2400 DPI",
+        "Precio": "380",
+        "Stock": "12",
+        "Categoría": "Electrónicos"
+    },
+    {
+        "Código de barras": "7501055314739",
+        "Nombre": "Pantalón Mezclilla",
+        "Descripción": "Corte recto, azul oscuro, para hombre",
+        "Precio": "600",
+        "Stock": "18",
+        "Categoría": "Ropa"
+    },
+    {
+        "Código de barras": "7500435193602",
+        "Nombre": "Set de Toallas",
+        "Descripción": "Dos toallas de baño de algodón egipcio",
+        "Precio": "750",
+        "Stock": "10",
+        "Categoría": "Hogar"
+    }
+]
