@@ -9,10 +9,7 @@ import { OrderConfirmation } from './components/OrderConfirmation';
 import { CartSummaryBar } from './components/CartSummaryBar';
 import type { Product, CartItem, OrderDetails, Step } from './types';
 
-// CONFIGURA TU NÚMERO DE WHATSAPP AQUÍ
-// Incluye el código de país sin el símbolo '+' o espacios.
-// Ejemplo para México: '5211234567890'
-const WHATSAPP_NUMBER = '5211234567890';
+const WHATSAPP_NUMBER = '525577599017';
 const SHIPPING_COST = 20;
 const PRODUCTS_URL = 'https://raw.githubusercontent.com/remato-shop/remato-shop.github.io/refs/heads/main/data/products.json';
 
