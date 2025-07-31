@@ -9,6 +9,9 @@ import { OrderConfirmation } from './components/OrderConfirmation';
 import { CartSummaryBar } from './components/CartSummaryBar';
 import type { Product, CartItem, OrderDetails, Step } from './types';
 
+// CONFIGURA TU NÚMERO DE WHATSAPP AQUÍ
+// Incluye el código de país sin el símbolo '+' o espacios.
+// Ejemplo para México: '5211234567890'
 const WHATSAPP_NUMBER = '525577599017';
 const SHIPPING_COST = 20;
 const PRODUCTS_URL = 'https://raw.githubusercontent.com/remato-shop/remato-shop.github.io/refs/heads/main/data/products.json';
@@ -49,6 +52,7 @@ const App: React.FC = () => {
           price: parseFloat(item['Precio']),
           stock: parseInt(item['Stock'], 10),
           category: item['Categoría'],
+          image: item['Imagen'] || undefined,
         }));
 
         setProducts(mappedProducts);
@@ -105,25 +109,44 @@ const App: React.FC = () => {
   }
   
   const sendOrderToWhatsApp = (orderDetails: OrderDetails) => {
-    const MAX_LENGTH = 4096;
-
+    // Se crea un mensaje estructurado que es fácil de leer para humanos y de procesar para un programa.
+    
+    // Lista de productos en formato: ID | Cantidad | Nombre
     const productList = orderDetails.cart
-      .map(item => `${item.product.id},${item.quantity}`)
+      .map(item => `${item.product.id} | ${item.quantity} | ${item.product.name}`)
       .join('\n');
 
     const message = `
-[PEDIDO:${orderDetails.id}]
-Recibe: ${orderDetails.recipientName}
-Dirección: ${orderDetails.deliveryAddress}
-Fecha: ${new Date(orderDetails.deliveryDate + 'T00:00:00').toISOString().split('T')[0]}
-Hora: ${orderDetails.deliveryTime}
---PRODUCTOS--
-${productList}
---FIN PRODUCTOS--
-    `.trim().replace(/^\s+/gm, '');
+*--- 🛍️ NUEVO PEDIDO REMATOSHOP 🛍️ ---*
 
-    if (message.length > MAX_LENGTH) {
-        alert("🚨 El mensaje es demasiado largo para enviarse por WhatsApp.\nPor favor, contacta al cliente directamente para confirmar.");
+*ID de Pedido:*
+\`\`\`${orderDetails.id}\`\`\`
+
+*Datos del Cliente:*
+- *Recibe:* ${orderDetails.recipientName}
+- *Dirección:* ${orderDetails.deliveryAddress}
+
+*Entrega Programada:*
+- *Fecha:* ${new Date(orderDetails.deliveryDate + 'T00:00:00').toLocaleDateString('es-MX', { weekday: 'long', day: 'numeric', month: 'long' })}
+- *Hora:* ${orderDetails.deliveryTime}
+
+--------------------------------------------------
+*Resumen de Productos:*
+(Formato: ID | Cantidad | Nombre)
+\`\`\`
+${productList}
+\`\`\`
+--------------------------------------------------
+
+*TOTAL A PAGAR:* *$${orderDetails.total.toFixed(2)}*
+
+¡Gracias por coordinar este pedido!
+    `.trim().replace(/^\s+/gm, '');
+    
+    // El límite de caracteres de una URL es de aproximadamente 2000. 
+    // Se codifica el mensaje para asegurar que sea una URL válida.
+    if (encodeURIComponent(message).length > 2000) {
+        alert("🚨 El pedido es muy grande y el mensaje podría no enviarse correctamente por WhatsApp.\n\nPor favor, contacta al cliente directamente para confirmar.");
         return;
     }
 
