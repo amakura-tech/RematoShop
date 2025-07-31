@@ -1,66 +1,378 @@
 [
     {
+        "Código de barras": "7501065076618",
+        "Nombre": "Creama Hinds",
+        "Descripción": "Piel seca",
+        "Precio": "55",
+        "Stock": "2",
+        "Categoría": "Farmacia"
+    },
+    {
+        "Código de barras": "0037836041396",
+        "Nombre": "Creama Hinds",
+        "Descripción": "Piel Extra Seca",
+        "Precio": "55",
+        "Stock": "1",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "5099457001154",
+        "Nombre": "Hilo dental Oral B",
+        "Descripción": "ultra floss",
+        "Precio": "25",
+        "Stock": "11",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7506306214996",
+        "Nombre": "Rexona Clinical",
+        "Descripción": "Desodorante",
+        "Precio": "40",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509552847925",
+        "Nombre": "Loreal Gel alcohol",
+        "Descripción": "Gel desinfectante",
+        "Precio": "20",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "0037836040085",
+        "Nombre": "Concha Nacar",
+        "Descripción": "Aclarante",
+        "Precio": "60",
+        "Stock": "5",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7502001166066",
+        "Nombre": "Barmicil",
+        "Descripción": "compuesto",
+        "Precio": "30",
+        "Stock": "11",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "0000000000001001",
+        "Nombre": "Tetrical",
+        "Descripción": "Crema humectante",
+        "Precio": "60",
+        "Stock": "1",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7891024005446",
+        "Nombre": "Colgate 20ml",
+        "Descripción": "sensitive",
+        "Precio": "15",
+        "Stock": "5",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "0650240051593",
+        "Nombre": "Asepxia polvo",
+        "Descripción": "maquillajes",
+        "Precio": "35",
+        "Stock": "9",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7501065064189",
+        "Nombre": "Sensodine",
+        "Descripción": "Limpieza profunda",
+        "Precio": "70",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "0310158081111",
+        "Nombre": "Sensodine",
+        "Descripción": "Menta fresca",
+        "Precio": "70",
+        "Stock": "3",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7500464428806",
+        "Nombre": "cepillo Flosy",
+        "Descripción": "cepillo de dientes",
+        "Precio": "15",
+        "Stock": "22",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "0001",
+        "Nombre": "colgate dental extrasuave para niños",
+        "Descripción": "cepillo dental para niños",
+        "Precio": "10",
+        "Stock": "10",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7500435151450",
+        "Nombre": "Oral B",
+        "Descripción": "Detox Esmalte",
+        "Precio": "90",
+        "Stock": "1",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509546651668",
+        "Nombre": "Colgate 150ml",
+        "Descripción": "triple accion",
+        "Precio": "35",
+        "Stock": "3",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "0650240007767",
+        "Nombre": "Zilka Medic talco",
+        "Descripción": "Talco para pies",
+        "Precio": "35",
+        "Stock": "14",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7506306214705",
+        "Nombre": "Sedal acondicionador",
+        "Descripción": "1 minuto super hidratacion",
+        "Precio": "20",
+        "Stock": "1",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7501050624008",
+        "Nombre": "Mexsana",
+        "Descripción": "Talco para pies",
+        "Precio": "25",
+        "Stock": "4",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7500435113472",
+        "Nombre": "Gillet Desodorante",
+        "Descripción": "Desodorante",
+        "Precio": "65",
+        "Stock": "3",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "75064860",
+        "Nombre": "Ego Sport Desodorante",
+        "Descripción": "Desodorante 45g",
+        "Precio": "45",
+        "Stock": "1",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7501003305800",
+        "Nombre": "Moztaza preparada",
+        "Descripción": "250g",
+        "Precio": "15",
+        "Stock": "11",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7702018913664",
+        "Nombre": "Gillet specializeo",
+        "Descripción": "82g invisible gel",
+        "Precio": "50",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7506339349023",
+        "Nombre": "Old Spice 150ml",
+        "Descripción": "Desodorante body spray",
+        "Precio": "60",
+        "Stock": "4",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7501019032424",
+        "Nombre": "Saba Tampones",
+        "Descripción": "10 tampones",
+        "Precio": "35",
+        "Stock": "5",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509546063843",
+        "Nombre": "Lady speed Stick",
+        "Descripción": "48h 150ml",
+        "Precio": "80",
+        "Stock": "4",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509546063447",
+        "Nombre": "Lady Speed Stick",
+        "Descripción": "cool 150ml",
+        "Precio": "80",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509552844795",
+        "Nombre": "Garnier Obao",
+        "Descripción": "ritual coco vainilla",
+        "Precio": "50",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509552844801",
+        "Nombre": "Garnier Obao",
+        "Descripción": "kiwi",
+        "Precio": "50",
+        "Stock": "1",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509552913750",
+        "Nombre": "Garnie Obao",
+        "Descripción": "Antibacterial",
+        "Precio": "50",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509552911640",
+        "Nombre": "Garnier Obao",
+        "Descripción": "ocianic",
+        "Precio": "50",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7500435169035",
+        "Nombre": "Herbal Essences Muss",
+        "Descripción": "Muss para cabello",
+        "Precio": "70",
+        "Stock": "8",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "0312547321815",
+        "Nombre": "Listerine",
+        "Descripción": "500ml",
+        "Precio": "80",
+        "Stock": "2",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7506306248526",
+        "Nombre": "Crema Ego modeladora",
+        "Descripción": "180ml",
+        "Precio": "35",
+        "Stock": "1",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509546073774",
+        "Nombre": "Stefano spazio",
+        "Descripción": "159ml",
+        "Precio": "80",
+        "Stock": "3",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7509546073767",
+        "Nombre": "stefano black",
+        "Descripción": "159ml",
+        "Precio": "80",
+        "Stock": "5",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "6986172232248",
+        "Nombre": "Epilador",
+        "Descripción": "Depilador en piedra",
+        "Precio": "15",
+        "Stock": "9",
+        "Categoría": "Sin categoría"
+    },
+    {
+        "Código de barras": "7506306213357",
+        "Nombre": "Dove Reconstruccon Completa",
+        "Descripción": "1.15L",
+        "Precio": "110",
+        "Stock": "3",
+        "Categoría": "Farmacia"
+    },
+    {
+        "Código de barras": "7501046104552",
+        "Nombre": "Maja Jabon",
+        "Descripción": "4 jabones, aroma rojo",
+        "Precio": "150",
+        "Stock": "5",
+        "Categoría": "Farmacia"
+    },
+    {
+        "Código de barras": "78004498",
+        "Nombre": "Rexona clinical",
+        "Descripción": "rosa",
+        "Precio": "30",
+        "Stock": "7",
+        "Categoría": "Farmacia"
+    },
+    {
+        "Código de barras": "UID-bc3c9f67ed",
+        "Nombre": "Loreal Hidra total 5",
+        "Descripción": "Crema facial y de ojos",
+        "Precio": "50",
+        "Stock": "4",
+        "Categoría": "Farmacia"
+    },
+    {
+        "Código de barras": "UID-e109422ea2",
+        "Nombre": "Revitalift",
+        "Descripción": "Acido Hiluronico noche",
+        "Precio": "100",
+        "Stock": "4",
+        "Categoría": "Farmacia"
+    },
+    {
+        "Código de barras": "7502253601391",
+        "Nombre": "ETERNAL SECRET",
+        "Descripción": "50+ FPS SENSIBLE",
+        "Precio": "100",
+        "Stock": "4",
+        "Categoría": "Farmacia"
+    },
+    {
+        "Código de barras": "7501791659062",
+        "Nombre": "Susituto de crema Aurera",
+        "Descripción": "Crema para cafe 1kg",
+        "Precio": "120",
+        "Stock": "3",
+        "Categoría": "Abarrotes"
+    },
+    {
+        "Código de barras": "7509546683188",
+        "Nombre": "Palmolive",
+        "Descripción": "Jabon Neutro",
+        "Precio": "60",
+        "Stock": "2",
+        "Categoría": "Farmacia"
+    },
+    {
         "Código de barras": "7506425665150",
-        "Nombre": "Escudo Jabón",
-        "Descripción": "Jabón en barra antibacterial, pack de 12",
+        "Nombre": "Escudo",
+        "Descripción": "Antibacterial Proteccion Neutra 10 barras + 2 gratis",
         "Precio": "190",
-        "Stock": "15",
-        "Categoría": "Cuidado Personal"
+        "Stock": "1",
+        "Categoría": "Farmacia"
     },
     {
         "Código de barras": "7506339323474",
-        "Nombre": "Salvo Limón",
-        "Descripción": "Lavavajillas líquido aroma limón 1.2L",
+        "Nombre": "Salvo",
+        "Descripción": "1.2L",
         "Precio": "60",
-        "Stock": "8",
-        "Categoría": "Limpieza"
-    },
-    {
-        "Código de barras": "7501001158300",
-        "Nombre": "Teclado Gamer",
-        "Descripción": "Mecánico con luces RGB programables",
-        "Precio": "1250",
-        "Stock": "0",
-        "Categoría": "Electrónicos"
-    },
-    {
-        "Código de barras": "7501001158301",
-        "Nombre": "Sudadera Casual",
-        "Descripción": "De algodón con capucha, color gris",
-        "Precio": "450",
-        "Stock": "25",
-        "Categoría": "Ropa"
-    },
-    {
-        "Código de barras": "7501052414739",
-        "Nombre": "Cafetera Express",
-        "Descripción": "Para café molido y cápsulas, 15 bares",
-        "Precio": "1800",
-        "Stock": "5",
-        "Categoría": "Hogar"
-    },
-    {
-        "Código de barras": "7500435133602",
-        "Nombre": "Mouse Inalámbrico",
-        "Descripción": "Ergonómico, 6 botones, 2400 DPI",
-        "Precio": "380",
-        "Stock": "12",
-        "Categoría": "Electrónicos"
-    },
-    {
-        "Código de barras": "7501055314739",
-        "Nombre": "Pantalón Mezclilla",
-        "Descripción": "Corte recto, azul oscuro, para hombre",
-        "Precio": "600",
-        "Stock": "18",
-        "Categoría": "Ropa"
-    },
-    {
-        "Código de barras": "7500435193602",
-        "Nombre": "Set de Toallas",
-        "Descripción": "Dos toallas de baño de algodón egipcio",
-        "Precio": "750",
-        "Stock": "10",
-        "Categoría": "Hogar"
+        "Stock": "4",
+        "Categoría": "Abarrotes"
     }
 ]
