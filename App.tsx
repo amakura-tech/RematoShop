@@ -18,54 +18,93 @@ const PRODUCTS_URL = 'https://raw.githubusercontent.com/remato-shop/remato-shop.
 
 
 const SearchIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
     </svg>
 );
 
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [loadingError, setLoadingError] = useState<string | null>(null);
   
   const [cart, setCart] = useState<CartItem[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
   const [step, setStep] = useState<Step>('selection');
   const [finalOrder, setFinalOrder] = useState<OrderDetails | null>(null);
 
   useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     const fetchProducts = async () => {
       try {
         setIsLoading(true);
         setLoadingError(null);
-        const response = await fetch(PRODUCTS_URL);
+        const response = await fetch(PRODUCTS_URL, { signal });
         if (!response.ok) {
           throw new Error(`Error ${response.status}: No se pudo obtener la lista de productos.`);
         }
         const rawData = await response.json();
         
-        const mappedProducts: Product[] = rawData.map((item: any) => ({
-          id: item['Código de barras'],
-          name: item['Nombre'],
-          description: item['Descripción'],
-          price: parseFloat(item['Precio']),
-          stock: parseInt(item['Stock'], 10),
-          category: item['Categoría'],
-          image: item['Imagen'] || undefined,
+        const mappedProducts: Product[] = rawData
+          .filter((item: any) => item && item['Código de barras']) // Ensure product has an ID
+          .map((item: any) => ({
+            id: item['Código de barras'],
+            name: item['Nombre'] || '',
+            description: item['Descripción'] || '',
+            price: parseFloat(item['Precio']) || 0,
+            stock: parseInt(item['Stock'], 10) || 0,
+            category: item['Categoría'] || '',
+            image: item['Imagen'] || undefined,
         }));
-
-        setProducts(mappedProducts);
+        
+        // De-duplicate products based on their ID to prevent rendering issues from dirty data.
+        const uniqueProductsMap = new Map<string, Product>();
+        for (const product of mappedProducts) {
+            if (!uniqueProductsMap.has(product.id)) {
+                uniqueProductsMap.set(product.id, product);
+            }
+        }
+        const uniqueProducts = Array.from(uniqueProductsMap.values());
+        
+        if (!signal.aborted) {
+            setProducts(uniqueProducts);
+        }
       } catch (err: any) {
-        console.error("Fallo al obtener los productos:", err);
-        setLoadingError('No se pudieron cargar los productos. Por favor, intenta de nuevo más tarde.');
+        if (signal.aborted) {
+            console.log('Fetch aborted');
+        } else {
+            console.error("Fallo al obtener los productos:", err);
+            setLoadingError('No se pudieron cargar los productos. Por favor, intenta de nuevo más tarde.');
+        }
       } finally {
-        setIsLoading(false);
+        if (!signal.aborted) {
+            setIsLoading(false);
+        }
       }
     };
 
     fetchProducts();
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
+  
+  const filteredProducts = useMemo(() => {
+    const lowercasedQuery = searchQuery.toLowerCase().trim();
+    if (!lowercasedQuery) {
+      return products;
+    }
+    return products.filter(product => {
+      const nameMatch = product.name.toLowerCase().includes(lowercasedQuery);
+      const priceMatch = product.price.toString().includes(lowercasedQuery);
+      return nameMatch || priceMatch;
+    });
+  }, [products, searchQuery]);
+
 
   const handleAddToCart = (product: Product) => {
     setCart(prevCart => {
@@ -186,19 +225,6 @@ ${productList}
   const cartSubtotal = useMemo(() => cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0), [cart]);
   const orderTotal = useMemo(() => cartSubtotal + SHIPPING_COST, [cartSubtotal]);
 
-
-  const filteredProducts = useMemo(() => {
-    const query = searchQuery.toLowerCase();
-    if (!query) {
-      return products;
-    }
-    return products.filter(product =>
-      product.name.toLowerCase().includes(query) ||
-      product.category.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query)
-    );
-  }, [searchQuery, products]);
-  
   const renderSelectionList = () => {
     if (filteredProducts.length > 0) {
       return (
@@ -213,10 +239,20 @@ ${productList}
         </div>
       );
     }
+
+    if (products.length > 0 && filteredProducts.length === 0) {
+      return (
+        <div className="text-center py-20">
+          <p className="text-2xl text-text-secondary font-semibold">No se encontraron productos</p>
+          <p className="text-text-secondary/70 mt-2">Intenta con otra palabra o revisa el precio que buscas.</p>
+        </div>
+      );
+    }
+
     return (
         <div className="text-center py-20">
-            <p className="text-2xl text-text-secondary font-semibold">No se encontraron productos</p>
-            <p className="text-text-secondary/70 mt-2">Intenta con otra búsqueda o revisa nuestros productos.</p>
+            <p className="text-2xl text-text-secondary font-semibold">No hay productos disponibles</p>
+            <p className="text-text-secondary/70 mt-2">Por favor, vuelve a intentarlo más tarde.</p>
         </div>
     );
   };
@@ -266,17 +302,19 @@ ${productList}
         
         return (
           <>
-            <div className="relative my-6 max-w-2xl mx-auto">
-              <input 
-                type="text" 
-                placeholder="Buscar por nombre, categoría o descripción..." 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-card-bg rounded-lg py-3 pl-12 pr-4 text-base text-text-primary placeholder-text-secondary/70 ring-1 ring-inset ring-border-soft focus:outline-none focus:ring-2 focus:ring-accent transition-shadow duration-200 shadow-sm"
-                aria-label="Buscar productos"
-              />
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <SearchIcon />
+            <div className="mb-8 max-w-2xl mx-auto">
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                   <SearchIcon />
+                </div>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Buscar por nombre o precio..."
+                  className="w-full bg-card-bg rounded-full p-4 pl-12 text-base text-text-primary ring-1 ring-inset ring-border-soft focus:outline-none focus:ring-2 focus:ring-accent transition shadow-sm"
+                  aria-label="Buscar productos"
+                />
               </div>
             </div>
             {renderSelectionList()}
