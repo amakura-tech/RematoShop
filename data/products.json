@@ -381,8 +381,8 @@
     },
     {
         "Código de barras": "78004498",
-        "Nombre": "Rexona clinical rosa",
-        "Marca": "Rexona",
+        "Nombre": "Raxona clinical rosa",
+        "Marca": "Raxona",
         "Precio": "30",
         "Precio de compra": "0",
         "Stock": "6",
@@ -415,7 +415,7 @@
         "Marca": "ETERNAL SECRET",
         "Precio": "100",
         "Precio de compra": "0",
-        "Stock": "4",
+        "Stock": "6",
         "Categoría": "Farmacia",
         "Imagen": ""
     },
@@ -747,6 +747,206 @@
         "Precio de compra": "0",
         "Stock": "2",
         "Categoría": "Abarrotes",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "7506306214996",
+        "Nombre": "Raxona Clinical Expert Aerosol 3x 96h",
+        "Marca": "Raxona",
+        "Precio": "75",
+        "Precio de compra": "0",
+        "Stock": "1",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "7500435178570",
+        "Nombre": "Gillet rastrillo corporal con barra protectora",
+        "Marca": "Gillette",
+        "Precio": "90",
+        "Precio de compra": "35",
+        "Stock": "3",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "0650240062063",
+        "Nombre": "Shampoo Tío Nacho Henna Egipcia Efecto Anti Canas 415 ml",
+        "Marca": "Tio Nacho",
+        "Precio": "90",
+        "Precio de compra": "0",
+        "Stock": "0",
+        "Categoría": "Farmacia",
+        "Imagen": "https://www.soriana.com/dw/image/v2/BGBD_PRD/on/demandware.static/-/Sites-soriana-grocery-master-catalog/default/dw7e530590/images/product/0650240062063_A.jpg?sw=100&sh=100&sm=fit"
+    },
+    {
+        "Código de barras": "0650240069055",
+        "Nombre": "Tio nachito bebe real",
+        "Marca": "Tio nacho",
+        "Precio": "80",
+        "Precio de compra": "0",
+        "Stock": "2",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "2588546677118",
+        "Nombre": "Speed Stick Hombre sensitive protection 85g",
+        "Marca": "speed stick",
+        "Precio": "60",
+        "Precio de compra": "40",
+        "Stock": "4",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "7501054509110",
+        "Nombre": "Nivea creama corporal de 1L milk nutririva",
+        "Marca": "Nivea",
+        "Precio": "140",
+        "Precio de compra": "100",
+        "Stock": "2",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "0072140022099",
+        "Nombre": "Nivea Shea Nourish 48h Acido hyaluronico, 1L",
+        "Marca": "Nivea",
+        "Precio": "140",
+        "Precio de compra": "100",
+        "Stock": "2",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "7501065628534",
+        "Nombre": "Pomada de la campana de 50g vitamina A y E con oxido de zinc",
+        "Marca": "Pomada de la campana",
+        "Precio": "40",
+        "Precio de compra": "25",
+        "Stock": "20",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "0650240005398",
+        "Nombre": "Silka Medic Pie de atleta para infecciones micoticas y pie de atleta",
+        "Marca": "silka medic",
+        "Precio": "100",
+        "Precio de compra": "0",
+        "Stock": "3",
+        "Categoría": "Farmacia",
+        "Imagen": "https://i5-mx.walmartimages.com/gr/images/product-images/img_large/00065024000740L.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"
+    },
+    {
+        "Código de barras": "7501046110287",
+        "Nombre": "Jabon Maja 140g clasico",
+        "Marca": "Maja",
+        "Precio": "75",
+        "Precio de compra": "0",
+        "Stock": "9",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "0037836093449",
+        "Nombre": "Crema Maja crema corporal clasico, españa 200ml",
+        "Marca": "Maja",
+        "Precio": "90",
+        "Precio de compra": "0",
+        "Stock": "2",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "6970772670630",
+        "Nombre": "Encedor marca flamita iso 9994",
+        "Marca": "flamita",
+        "Precio": "8",
+        "Precio de compra": "0",
+        "Stock": "50",
+        "Categoría": "Abarrotes",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "4005808315093",
+        "Nombre": "Nivea Milk Nutritiva 250ml 5 en 1 cuidado completo",
+        "Marca": "Nivea",
+        "Precio": "45",
+        "Precio de compra": "35",
+        "Stock": "6",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "7501199409696",
+        "Nombre": "Dial Jabon liquido corporal Minerales Rosados Renovador 354ml",
+        "Marca": "Dial",
+        "Precio": "60",
+        "Precio de compra": "40",
+        "Stock": "6",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "7501199407319",
+        "Nombre": "Dial Jabon corporal Renovador Gojiberry con propiedades antioxidantes",
+        "Marca": "Dial",
+        "Precio": "60",
+        "Precio de compra": "35",
+        "Stock": "6",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "7890781831121",
+        "Nombre": "Vencort 12 cucharas sopera",
+        "Marca": "vencort",
+        "Precio": "40",
+        "Precio de compra": "0",
+        "Stock": "2",
+        "Categoría": "Abarrotes",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "6973568477826",
+        "Nombre": "Cafetera Electrica Sune 127v 1000w",
+        "Marca": "Sune",
+        "Precio": "250",
+        "Precio de compra": "0",
+        "Stock": "2",
+        "Categoría": "Electrodomesticos",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "0078883760229",
+        "Nombre": "Chiles clement jacques enteros jalapeños 730g",
+        "Marca": "clemente jacques",
+        "Precio": "30",
+        "Precio de compra": "0",
+        "Stock": "12",
+        "Categoría": "Abarrotes",
+        "Imagen": "https://http2.mlstatic.com/D_NQ_NP_2X_891934-MLU79111802971_092024-F.webp"
+    },
+    {
+        "Código de barras": "0841058004547",
+        "Nombre": "Shick Protec sensitive Creama para afeitar en gel de 200ml Gel de afeitar para piel sencible",
+        "Marca": "Shick",
+        "Precio": "80",
+        "Precio de compra": "0",
+        "Stock": "3",
+        "Categoría": "Farmacia",
+        "Imagen": ""
+    },
+    {
+        "Código de barras": "UID-449b8dd1b4",
+        "Nombre": "Jarra de plastico para Agua con 4 vasos de platico",
+        "Marca": "generico",
+        "Precio": "140",
+        "Precio de compra": "0",
+        "Stock": "2",
+        "Categoría": "Sin categoría",
         "Imagen": ""
     }
 ]
